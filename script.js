@@ -12,10 +12,12 @@ function renderTasks() {
     taskList.innerHTML = '';         // This line clears out the old list from the screen
     tasks.forEach((task, index) => {       // loops through the tasks array, for each tasks it will run loop
     const li = document.createElement('li');       // it will create a new list item in js
-    li.innerHTML = `                               // Adds the task name and ❌ button
+    li.innerHTML = `                               
     <span>${task} </span>
-    <button onclick="deletTask(${index})">❌</button>     // add the tasks and the ❌ button is created for each task. The onclick="deleteTask(${index})" part makes the button call the deleteTask() function with the task’s index when clicked.
-    `;
+    <button onclick="deletTask(${index})">❌</button>     
+    `;                                                     // Adds the task name and ❌ button
+    // add the tasks and the ❌ button is created for each task. The onclick="deleteTask(${index})" part makes the button call the deleteTask() function with the task’s index when clicked.
+    
     taskList.appendChild(li);         // we are adding that <li> (the task + ❌ button) to the actual HTML list on the page.
     });
 }
