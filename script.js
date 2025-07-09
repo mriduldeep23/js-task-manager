@@ -2,7 +2,7 @@ const taskInput = document.getElementById('taskInput');    // document.getElemen
 const addBtn = document.getElementById('addBtn');         // e.g. if you have an HTML element <div id="myDiv">, you would use document.getElementById('myDiv').
 const taskList = document.getElementById('taskList');
 
-let tasks = JSON.parse(localstorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
