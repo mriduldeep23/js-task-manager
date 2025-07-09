@@ -10,7 +10,7 @@ function saveTasks() {
 
 function renderTasks() {
     taskList.innerHTML = '';         // This line clears out the old list from the screen
-    tasks.forEach(element => {       // loops through the tasks array, for each tasks it will run loop
+    tasks.forEach((task, index) => {       // loops through the tasks array, for each tasks it will run loop
     const li = document.createElement('li');       // it will create a new list item in js
     li.innerHTML = `                               // Adds the task name and ❌ button
     <span>${task} </span>
