@@ -13,15 +13,15 @@ function renderTasks() {
     tasks.forEach(element => {       // loops through the tasks array, for each tasks it will run loop
     const li = document.createElement('li');       // it will create a new list item in js
     li.innerHTML = `                               // Adds the task name and ❌ button
-    <span>${tasks} </span>
-    <button onClick="deletTask(${tasks})">❌</button>     // add the tasks and the ❌ button is created for each task. The onclick="deleteTask(${index})" part makes the button call the deleteTask() function with the task’s index when clicked.
+    <span>${task} </span>
+    <button onclick="deletTask(${index})">❌</button>     // add the tasks and the ❌ button is created for each task. The onclick="deleteTask(${index})" part makes the button call the deleteTask() function with the task’s index when clicked.
     `;
     taskList.appendChild(li);         // we are adding that <li> (the task + ❌ button) to the actual HTML list on the page.
     });
 }
 
 function addTask() {
-    const tasks = taskInput.value.trim();      // (taskInput) is the input box where the user type task. (.value) gets actual text entered by user. (.trim()) removes any extra spaces from the beginning and end of the text.Example: " Buy Milk " becomes "Buy Milk"
+    const task = taskInput.value.trim();      // (taskInput) is the input box where the user type task. (.value) gets actual text entered by user. (.trim()) removes any extra spaces from the beginning and end of the text.Example: " Buy Milk " becomes "Buy Milk"
     if(task) {                                 // If the input is not empty, we go inside the if block.
         tasks.push(task);                      // (tasks) is an array that holds all the task names. (.push(task)) means add the new task to the end of the array.
         saveTasks();                           // saves the tasks array into browser memory using localStorage
