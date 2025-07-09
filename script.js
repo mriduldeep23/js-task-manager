@@ -4,7 +4,7 @@ const taskList = document.getElementById('taskList');
 
 let tasks = JSON.parse(localstorage.getItem('tasks')) || [];
 
-function saveTasks{} {
+function saveTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -28,6 +28,7 @@ function addTask() {
         renderTasks();                         // This calls another function that updates the task list shown on the screen- (including the new one)
         taskInput.value = '';                  // After adding the task, we clear the input box
     } 
+}
 
 function deleteTask(index) {                   // It runs when a user clicks the ❌ delete button next to a task. It tells which task (by its position) to delete from the list.
   tasks.splice(index, 1);                      // removes the task from the tasks array.
@@ -36,8 +37,4 @@ function deleteTask(index) {                   // It runs when a user clicks the
 }
 
 addBtn.addEventListener('click', addTask);     // When you click the button, it calls addTask() function. That function takes the text from input and adds it to the tasks array and updates everything
-renderTasks();                                  
-
-}
-
-
+renderTasks();  
