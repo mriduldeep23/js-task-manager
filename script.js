@@ -25,12 +25,19 @@ function renderTasks() {
 function addTask() {
     const task = taskInput.value.trim();      // (taskInput) is the input box where the user type task. (.value) gets actual text entered by user. (.trim()) removes any extra spaces from the beginning and end of the text.Example: " Buy Milk " becomes "Buy Milk"
     if(task) {                                 // If the input is not empty, we go inside the if block.
-        tasks.push(task);                      // (tasks) is an array that holds all the task names. (.push(task)) means add the new task to the end of the array.
+        tasks.push({name:task, completed:false  });                      // (tasks) is an array that holds all the task names. (.push(task)) means add the new task to the end of the array.
         saveTasks();                           // saves the tasks array into browser memory using localStorage
         renderTasks();                         // This calls another function that updates the task list shown on the screen- (including the new one)
         taskInput.value = '';                  // After adding the task, we clear the input box
     } 
 }
+
+function toggleComplete(index) {
+  tasks[index].completed = !tasks[index].completed; // Flip true/false
+  saveTasks(); // Save change to storage
+  renderTasks(); // Re-render updated list
+}
+
 
 function deleteTask(index) {                   // It runs when a user clicks the ❌ delete button next to a task. It tells which task (by its position) to delete from the list.
   tasks.splice(index, 1);                      // removes the task from the tasks array.
@@ -39,4 +46,21 @@ function deleteTask(index) {                   // It runs when a user clicks the
 }
 
 addBtn.addEventListener('click', addTask);     // When you click the button, it calls addTask() function. That function takes the text from input and adds it to the tasks array and updates everything
-renderTasks();  
+
+//renderTasks();  
+
+function renderTask() {
+    taskList.innerHTML = '';                     // clear old list
+    tasks.forEach((tsk, index) => {              // loop through each task
+        const li = document.createElement('li'); // Create <li> for each task
+    li.className = task.completed ? 'completed': '';        // If task is completed, add a class to style it
+    li.innerHTML = `                            // Add checkbox, task name, and delete button inside li
+    <input type="checkbox" onchange="toggleComplete(${index})" ${task.completed ? 'checked' : ''}>     
+     <span>${task.name}</span>
+      <button onclick="deleteTask(${index})">❌</button>
+    `;
+    taskList.appendChild(li); // 6. Add the <li> to the page inside <ul>
+         });
+}
+
+
