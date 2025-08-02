@@ -25,7 +25,7 @@ function renderTasks() {
 function addTask() {
     const task = taskInput.value.trim();    
     if(task) {        
-        const isDuplicate = task.some(t => t.name.toLowerCase() === task.toLowerCase());
+        const isDuplicate = tasks.some(t => t.name.toLowerCase() === task.toLowerCase());
         if(isDuplicate) {
             alert("Task Already exist!");
             return;
@@ -53,7 +53,7 @@ function deleteTask(index) {
 
 addBtn.addEventListener('click', addTask);       
 
-function renderTask() {
+function renderTasks() {
     taskList.innerHTML = '';                                          
     tasks.forEach((tsk, index) => {                                    
         const li = document.createElement('li');                      
